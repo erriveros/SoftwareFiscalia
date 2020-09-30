@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_030600) do
+ActiveRecord::Schema.define(version: 2020_09_30_035848) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(version: 2020_09_30_030600) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["crime_id"], name: "index_crime_victims_on_crime_id"
     t.index ["victim_id"], name: "index_crime_victims_on_victim_id"
+  end
+
+  create_table "crime_witnesses", force: :cascade do |t|
+    t.integer "crime_id", null: false
+    t.integer "witness_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["crime_id"], name: "index_crime_witnesses_on_crime_id"
+    t.index ["witness_id"], name: "index_crime_witnesses_on_witness_id"
   end
 
   create_table "crimes", force: :cascade do |t|
@@ -107,4 +116,6 @@ ActiveRecord::Schema.define(version: 2020_09_30_030600) do
   add_foreign_key "crime_thiefs", "thiefs"
   add_foreign_key "crime_victims", "crimes"
   add_foreign_key "crime_victims", "victims"
+  add_foreign_key "crime_witnesses", "crimes"
+  add_foreign_key "crime_witnesses", "witnesses"
 end

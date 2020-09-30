@@ -1,0 +1,23 @@
+<%= form_with(model: crime_witness, local: false) do |form| %>
+<% Witness.all.each do |witness|%>
+  <li style="list-style: none">
+    <%= form.label :witness_id, witness.name %>
+    <%= form.radio_button :witness_id,witness.id %>
+  </li><% end %>
+<%= hidden_field_tag 'crime_id', @crime.id  %>
+  <% if crime_witness.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(crime_witness.errors.count, "error") %> prohibited this crime_witness from being saved:</h2>
+
+      <ul>
+        <% crime_witness.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit "Añadir testigo del crimen"%>
+  </div>
+<% end %>

@@ -31,6 +31,7 @@
 <%@victim = Victim.new%>
 <%@witness = Witness.new%>
 <%@crimevictim = CrimeVictim.new%>
+<%@crimewitness = CrimeWitness.new%>
 <div class="card text-white bg-dark mb-3" style="margin-top:20px">
   <div class="card-header">
   <h2>Instanciar Detenido</h2>
@@ -49,6 +50,12 @@
     </div>
     <%= render partial: 'crime_victims/form', locals: {crime_victim: @crimevictim} %>
   </div>
+    <div class="card text-white bg-dark mb-3" style="margin-top:20px">
+      <div class="card-header">
+        <h2>Añadir Testigo</h2>
+      </div>
+      <%= render partial: 'crime_witnesses/form', locals: {crime_witness: @crimewitness} %>
+    </div>
 </div>
 
   <div class="card text-white bg-dark mb-3" style="margin-top:20px">
@@ -82,12 +89,33 @@
         <th>Nombre</th>
         <th>Detalle</th>
       <tr>
-        <% victim_ids = CrimeVictim.where(crime_id:@crime.id).pluck(:victim_id)%>
+        <% victim_ids = CrimeVictim.where(crime_id: @crime.id).pluck(:victim_id)%>
         <% Victim.where(id:victim_ids).each do |victim|%>
         <tr>
           <td><%= victim.rut%></td>
           <td><%= victim.name%></td>
           <td><%= victim.detalle%></td>
+        <tr>
+      <%end%>
+    </table>
+  </div>
+
+  <div class="card text-white bg-dark mb-3" style="margin-top:20px">
+    <div class="card-header">
+      <h2>Testigos</h2>
+    </div>
+    <table class="table table-striped table-dark">
+      <tr>
+        <th>Rut</th>
+        <th>Nombre</th>
+        <th>Detalle</th>
+      <tr>
+        <% witness_ids = CrimeWitness.where(crime_id: @crime.id).pluck(:witness_id)%>
+        <% Witness.where(id:witness_ids).each do |witness|%>
+        <tr>
+          <td><%= witness.rut%></td>
+          <td><%= witness.name%></td>
+          <td><%= witness.detalle%></td>
         <tr>
       <%end%>
     </table>

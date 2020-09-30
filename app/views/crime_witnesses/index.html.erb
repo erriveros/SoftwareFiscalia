@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Crime Witnesses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @crime_witnesses.each do |crime_witness| %>
+      <tr>
+        <td><%= link_to 'Show', crime_witness %></td>
+        <td><%= link_to 'Edit', edit_crime_witness_path(crime_witness) %></td>
+        <td><%= link_to 'Destroy', crime_witness, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Crime Witness', new_crime_witness_path %>
