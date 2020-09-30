@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_004813) do
+ActiveRecord::Schema.define(version: 2020_09_30_030600) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 2020_09_30_004813) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["crime_id"], name: "index_crime_thiefs_on_crime_id"
     t.index ["thief_id"], name: "index_crime_thiefs_on_thief_id"
+  end
+
+  create_table "crime_victims", force: :cascade do |t|
+    t.integer "crime_id", null: false
+    t.integer "victim_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["crime_id"], name: "index_crime_victims_on_crime_id"
+    t.index ["victim_id"], name: "index_crime_victims_on_victim_id"
   end
 
   create_table "crimes", force: :cascade do |t|
@@ -96,4 +105,6 @@ ActiveRecord::Schema.define(version: 2020_09_30_004813) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "crime_thiefs", "crimes"
   add_foreign_key "crime_thiefs", "thiefs"
+  add_foreign_key "crime_victims", "crimes"
+  add_foreign_key "crime_victims", "victims"
 end
