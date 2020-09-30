@@ -35,7 +35,12 @@
             </li>
             <li class="nav-item">
               <% if signed_in? %>
-                <a class="nav-link" <%=link_to "Reportar", new_crime_path, :style => "color:white"%></a>
+                <a class="nav-link" <%=link_to "Reportar crimen", new_crime_path, :style => "color:white"%></a>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <% if signed_in? %>
+                <a class="nav-link" <%=link_to "Ingresar Delincuente", new_thief_path, :style => "color:white"%></a>
               <% end %>
             </li>
           </ul>
