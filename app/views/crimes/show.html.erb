@@ -21,7 +21,7 @@
       <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list"><%= @crime.place%></div>
       <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list"><%= @crime.created_at.to_date%></div>
       <div class="tab-pane fade" id="list-desc" role="tabpanel" aria-labelledby="list-desc-list"><%= @crime.description%></div>
-      <div class="tab-pane fade" id="list-act" role="tabpanel" aria-labelledby="list-act-list"><%= link_to "Editar", edit_crime_path(@crime.id),:class => "btn btn-primary"%><%= link_to "Eliminar", crime_path(@crime.id),:style => "margin-left:5px",:data => { :foo_bar => 'Seguro que desea borrar el crimen?' },:method => :DELETE,:class => "btn btn-danger"%></div>
+      <div class="tab-pane fade" id="list-act" role="tabpanel" aria-labelledby="list-act-list"><%= link_to "Editar", edit_crime_path(@crime.id),:class => "btn btn-primary"%>  <% if current_user.Fiscal? %><%= link_to "Pronunciarse", @crime,:class => "btn btn-primary"%><% end %>  <%= link_to "Eliminar", crime_path(@crime.id),:style => "margin-left:5px",:data => { :foo_bar => 'Seguro que desea borrar el crimen?' },:method => :DELETE,:class => "btn btn-danger"%></div>
 
     </div>
   </div>
@@ -190,6 +190,7 @@
           <% end %>
         </div>
     </div>
+
   </div>
 
 </div>
