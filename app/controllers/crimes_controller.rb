@@ -56,6 +56,12 @@ class CrimesController < ApplicationController
     CrimeThief.where(crime_id:@crime.id).each do |ct|
       ct.destroy
     end
+    CrimeVictim.where(crime_id:@crime.id).each do |ct|
+      ct.destroy
+    end
+    CrimeWitness.where(crime_id:@crime.id).each do |ct|
+      ct.destroy
+    end
     @crime.destroy
     respond_to do |format|
       format.html { redirect_to crimes_url, notice: 'Crime was successfully destroyed.' }
