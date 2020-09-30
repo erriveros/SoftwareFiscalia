@@ -159,13 +159,26 @@
         </div>
       </div>
     </div>
+      <div class="card text-white bg-dark mb-3" style="margin-top:20px">
+        <div class="card-header">
+          <h2>Multimedia</h2>
+        </div>
+        <div class="card-body">
+          <div style="width:400px; height:400px">
+            <%= video_tag(url_for(@crime.clip), style:"width:100%;height: auto", controls:'') %>
+          </div>
+          <div style="width:400px; height:400px">
+            <%(0...@crime.images.count).each do |image| %>
+              <%= image_tag(@crime.images[image], style:'width:50%') %>
+            <% end %>
+          </div>
+          <%(0...@crime.files.count).each do |file| %>
+            <%=link_to 'Download file',@crime.files[file], download: "" %>
+          <% end %>
+        </div>
+    </div>
   </div>
 
 </div>
 
 </div>
-
-
-  <%(0...@crime.images.count).each do |image| %>
-    <%= image_tag(@crime.images[image], style:'width:50%') %>
-  <% end %>

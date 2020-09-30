@@ -19,6 +19,14 @@
   <%= form.label :images, 'Images' %>
   <%= form.file_field :images, multiple: true %>
 </li>
+<li style="list-style: none">
+  <%= form.label :files, 'Files' %>
+  <%= form.file_field :files, multiple: true %>
+</li>
+<li style="list-style: none">
+  <%= form.label :clip, 'Videos' %>
+  <%= form.file_field :clip %>
+</li>
   <% if crime.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(crime.errors.count, "error") %> prohibited this crime from being saved:</h2>
