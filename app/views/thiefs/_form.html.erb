@@ -1,10 +1,22 @@
+<div class="field mx-auto", style="width: 200px;">
 <%= form_with(model: thief, local: false) do |form| %>
-<%= form.label :name%>
-<%= form.text_field :name%>
-<%= form.label :rut%>
-<%= form.text_field :rut%>
-<%= form.label :tags%>
-<%= form.text_field :tags%>
+
+  <div class="field">
+    <%= form.label :name%>
+    <%= form.text_field :name%>
+  </div>
+  <div class="field">
+    <%= form.label :rut%>
+    <%= form.text_field :rut%>
+  </div>
+  <div class="field">
+    <%= form.label :tags%>
+    <%= form.text_field :tags%>
+  </div>
+  <div class="field">
+    <%= form.label :alias_list%>
+    <%= form.text_field :alias_list%>
+  </div>
 <%= form.label :alias_list%>
 <%= form.text_field :alias_list%>
   <% if thief.errors.any? %>
@@ -23,3 +35,4 @@
     <%= form.submit "Crear Detenido" %>
   </div>
 <% end %>
+</div>
