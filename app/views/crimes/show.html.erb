@@ -28,6 +28,7 @@
 </div>
 <%@crimethief = CrimeThief.new%>
 <%@thief = Thief.new%>
+<%@victim = Victim.new%>
 <div class="card text-white bg-dark mb-3" style="margin-top:20px">
 <div class="card-header">
 <h2>Instanciar Detenido</h2></div>
@@ -38,7 +39,14 @@
 <h2>Añadir Autor</h2>
 </div>
 <%= render partial: 'crime_thiefs/form', locals: {crime_thief: @crimethief} %>
-</div></div>
+</div>
+<div class="card text-white bg-dark mb-3" style="margin-top:20px">
+  <div class="card-header">
+    <h2>Añadir Victimas</h2>
+  </div>
+  <%= render partial: 'victims/form', locals: {victim: @victim} %>
+</div>
+</div>
 
 <div class="col-3">
 </div></div>
