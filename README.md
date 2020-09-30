@@ -1,8 +1,5 @@
 # README
 
-TXT Con El TODO
-https://docs.google.com/document/d/1QTL7PFobxmAZ7peRWiZ9hJ1dOjSSqLpoVmrqSnHe_kg/edit?usp=sharing
-
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
