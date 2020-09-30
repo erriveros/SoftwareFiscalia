@@ -1,9 +1,15 @@
 <%= form_with(model: crime_witness, local: false) do |form| %>
-<% Witness.all.each do |witness|%>
+
   <li style="list-style: none">
-    <%= form.label :witness_id, witness.name %>
-    <%= form.radio_button :witness_id,witness.id %>
-  </li><% end %>
+    <% witnesses = Witness.all %>
+    <%= form.collection_select :witness_id, witnesses.order(:name),:id,:name, include_blank: true %>
+  </li>
+
+<%# Witness.all.each do |witness|%>
+<!--  <li style="list-style: none">-->
+    <%#= form.label :witness_id, witness.name %>
+    <%#= form.radio_button :witness_id,witness.id %>
+<!--  </li><%# end %>-->
 <%= hidden_field_tag 'crime_id', @crime.id  %>
   <% if crime_witness.errors.any? %>
     <div id="error_explanation">

@@ -128,25 +128,38 @@
     </table>
   </div>
 
-  <div class="card text-white bg-dark mb-3" style="margin-top:20px">
-  <div class="card-header">
-  <h2>Añadir Autor</h2>
-  </div>
-  <%= render partial: 'crime_thiefs/form', locals: {crime_thief: @crimethief} %>
-
-  <div class="card text-white bg-dark mb-3" style="margin-top:20px">
-    <div class="card-header">
-      <h2>Añadir Victima</h2>
-    </div>
-    <%= render partial: 'crime_victims/form', locals: {crime_victim: @crimevictim} %>
-  </div>
-    <div class="card text-white bg-dark mb-3" style="margin-top:20px">
-      <div class="card-header">
-        <h2>Añadir Testigo</h2>
+  <div class="row">
+    <div class="col-4 mx-auto">
+      <div class="card text-white bg-dark mb-3" style="margin-top:20px">
+        <div class="card-header">
+          <h2>Añadir Autor</h2>
+        </div>
+        <div class="card-body">
+          <%= render partial: 'crime_thiefs/form', locals: {crime_thief: @crimethief} %>
+        </div>
       </div>
-      <%= render partial: 'crime_witnesses/form', locals: {crime_witness: @crimewitness} %>
     </div>
-</div>
+    <div class="col-4 mx-auto">
+      <div class="card text-white bg-dark mb-3" style="margin-top:20px">
+        <div class="card-header">
+          <h2>Añadir Victima</h2>
+        </div>
+        <div class="card-body">
+          <%= render partial: 'crime_victims/form', locals: {crime_victim: @crimevictim} %>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 mx-auto">
+      <div class="card text-white bg-dark mb-3" style="margin-top:20px">
+        <div class="card-header">
+          <h2>Añadir Testigo</h2>
+        </div>
+        <div class="card-body">
+          <%= render partial: 'crime_witnesses/form', locals: {crime_witness: @crimewitness} %>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
 

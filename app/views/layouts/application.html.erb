@@ -38,11 +38,6 @@
                 <a class="nav-link" <%=link_to "Reportar crimen", new_crime_path, :style => "color:white"%></a>
               <% end %>
             </li>
-            <li class="nav-item">
-              <% if signed_in? %>
-                <a class="nav-link" <%=link_to "Ingresar Delincuente", new_thief_path, :style => "color:white"%></a>
-              <% end %>
-            </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

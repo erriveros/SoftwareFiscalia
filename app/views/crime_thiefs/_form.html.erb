@@ -1,9 +1,11 @@
 <%= form_with(model: crime_thief, local: false) do |form| %>
-<% Thief.all.each do |thief|%>
+
+<%# Thief.all.each do |thief|%>
 <li style="list-style: none">
-<%= form.label :thief_id, thief.name %>
-<%= form.radio_button :thief_id,thief.id %>
-</li><% end %>
+  <% thiefs = Thief.all %>
+  <%= form.collection_select :thief_id, thiefs.order(:name),:id,:name, include_blank: true %>
+</li>
+<%# end %>
 <%= hidden_field_tag 'crime_id', @crime.id  %>
 <%= %>
   <% if crime_thief.errors.any? %>
