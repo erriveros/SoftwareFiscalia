@@ -1,0 +1,23 @@
+<%= form_with(model: crime_victim, local: false) do |form| %>
+<% Victim.all.each do |victim|%>
+  <li style="list-style: none">
+    <%= form.label :victim_id, victim.name %>
+    <%= form.radio_button :victim_id,victim.id %>
+  </li><% end %>
+  <%= hidden_field_tag 'crime_id', @crime.id  %>
+
+  <% if crime_victim.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(crime_victim.errors.count, "error") %> prohibited this crime_victim from being saved:</h2>
+
+      <ul>
+        <% crime_victim.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= form.submit "Añadir victima del crimen"%>
+  </div>
+<% end %>

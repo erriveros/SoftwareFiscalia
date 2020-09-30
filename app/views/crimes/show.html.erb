@@ -30,6 +30,7 @@
 <%@thief = Thief.new%>
 <%@victim = Victim.new%>
 <%@witness = Witness.new%>
+<%@crimevictim = CrimeVictim.new%>
 <div class="card text-white bg-dark mb-3" style="margin-top:20px">
   <div class="card-header">
   <h2>Instanciar Detenido</h2>
@@ -41,6 +42,13 @@
   <h2>Añadir Autor</h2>
   </div>
   <%= render partial: 'crime_thiefs/form', locals: {crime_thief: @crimethief} %>
+
+  <div class="card text-white bg-dark mb-3" style="margin-top:20px">
+    <div class="card-header">
+      <h2>Añadir Victima</h2>
+    </div>
+    <%= render partial: 'crime_victims/form', locals: {crime_victim: @crimevictim} %>
+  </div>
 </div>
 
   <div class="card text-white bg-dark mb-3" style="margin-top:20px">
@@ -49,16 +57,37 @@
     </div>
     <table class="table table-striped table-dark">
       <tr>
-        <th>#</th>
+        <th>Rut</th>
         <th>Nombre</th>
         <th>Accion</th>
       <tr>
         <% criminal_ids = CrimeThief.where(crime_id:@crime.id).pluck(:thief_id)%>
         <% Thief.where(id:criminal_ids).each do |criminal|%>
         <tr>
+          <td><%= criminal.rut%></td>
           <td><%= criminal.name%></td>
-          <td><%= criminal.name%></td>
-          <td><%= criminal.name%></td>
+          <td><%= criminal.tags%></td>
+        <tr>
+      <%end%>
+    </table>
+  </div>
+
+  <div class="card text-white bg-dark mb-3" style="margin-top:20px">
+    <div class="card-header">
+      <h2>Victimas</h2>
+    </div>
+    <table class="table table-striped table-dark">
+      <tr>
+        <th>Rut</th>
+        <th>Nombre</th>
+        <th>Detalle</th>
+      <tr>
+        <% victim_ids = CrimeVictim.where(crime_id:@crime.id).pluck(:victim_id)%>
+        <% Victim.where(id:victim_ids).each do |victim|%>
+        <tr>
+          <td><%= victim.rut%></td>
+          <td><%= victim.name%></td>
+          <td><%= victim.detalle%></td>
         <tr>
       <%end%>
     </table>
@@ -67,15 +96,15 @@
 
   <div class="card text-white bg-dark mb-3" style="margin-top:20px">
     <div class="card-header">
-      <h2>Añadir Testigos</h2>
+      <h2>Ingresar Testigos</h2>
     </div>
     <%= render partial: 'witnesses/form', locals: {witness: @witness} %>
-
     <div class="card-header">
-      <h2>Añadir Victimas</h2>
+      <h2>Ingresar Victimas</h2>
     </div>
     <%= render partial: 'victims/form', locals: {victim: @victim} %>
   </div>
+
   </div>
 
 <!--<div class="col-3">-->
@@ -103,4 +132,3 @@
   <%(0...@crime.images.count).each do |image| %>
     <%= image_tag(@crime.images[image], style:'width:50%') %>
   <% end %>
-</div>

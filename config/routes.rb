@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :crime_victims
   resources :witnesses
   resources :victims
   devise_for :users

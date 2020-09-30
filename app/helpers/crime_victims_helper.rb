@@ -1,0 +1,2 @@
+module CrimeVictimsHelper
+end
