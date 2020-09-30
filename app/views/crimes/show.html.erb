@@ -164,16 +164,29 @@
           <h2>Multimedia</h2>
         </div>
         <div class="card-body">
-          <div style="width:400px; height:400px">
-            <%= video_tag(url_for(@crime.clip), style:"width:100%;height: auto", controls:'') %>
-          </div>
-          <div style="width:400px; height:400px">
-            <%(0...@crime.images.count).each do |image| %>
-              <%= image_tag(@crime.images[image], style:'width:50%') %>
+          <% if @crime.clip.attached?%>
+            <div style="width:400px; height:400px">
+                <%= video_tag(url_for(@crime.clip), style:"width:100%;height: auto", controls:'') %>
+                <br>
+                <%= @crime.clip.filename.to_s%>
+            </div>
+          <%end%>
+          <% if @crime.images.count != 0 %>
+            <div style="width:400px; height:400px">
+              <%(0...@crime.images.count).each do |image| %>
+                <%= image_tag(@crime.images[image], style:'width:50%') %>
+                <br>
+                <%= @crime.images[image].filename.to_s%>
+              <% end %>
+            </div>
+          <%end%>
+          <% if @crime.files.count != 0  %>
+            <%(0...@crime.files.count).each do |file| %>
+              <%= image_tag("default_file_photo.png", style:'width:10%;height: auto') %>
+              <br>
+              <%= "Descargar Archivo: "%>
+              <%=link_to @crime.files[file].filename.to_s ,@crime.files[file], download: "" %>
             <% end %>
-          </div>
-          <%(0...@crime.files.count).each do |file| %>
-            <%=link_to 'Download file',@crime.files[file], download: "" %>
           <% end %>
         </div>
     </div>
