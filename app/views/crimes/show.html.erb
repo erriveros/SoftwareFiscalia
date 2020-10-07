@@ -7,9 +7,9 @@
   <div class="col-4">
     <div class="list-group" id="list-tab" role="tablist">
       <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home" style="color:white; background:#343a40">Titulo</a>
-      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile" style="color:white; background:#343a40">Etiquetas</a>
+      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile" style="color:white; background:#343a40">Marca</a>
       <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages" style="color:white; background:#343a40">Lugar</a>
-            <a class="list-group-item list-group-item-action" id="list-desc-list" data-toggle="list" href="#list-desc" role="tab" aria-controls="desc" style="color:white; background:#343a40">Descripcion</a>
+            <a class="list-group-item list-group-item-action" id="list-desc-list" data-toggle="list" href="#list-desc" role="tab" aria-controls="desc" style="color:white; background:#343a40">Relato</a>
       <a class="list-group-item list-group-item-action" id="list-act-list" data-toggle="list" href="#list-act" role="tab" aria-controls="act" style="color:white; background:#343a40">Opciones</a>
 
     </div>
@@ -36,7 +36,7 @@
     <div class="col-4 mx-auto">
       <div class="card text-white bg-dark mb-3" style="margin-top:20px">
         <div class="card-header">
-          <h2>Instanciar Detenido</h2>
+          <h2>Registrar Imputado</h2>
         </div>
         <div class="card-body">
           <%= render partial: 'thiefs/form', locals: {thief: @thief} %>
@@ -46,7 +46,7 @@
     <div class="col-4">
       <div class="card text-white bg-dark mb-3" style="margin-top:20px">
         <div class="card-header">
-          <h2>Ingresar Victima</h2>
+          <h2>Registrar Victima</h2>
         </div>
         <div class="card-body">
           <%= render partial: 'victims/form', locals: {victim: @victim} %>
@@ -56,7 +56,7 @@
     <div class="col-4">
       <div class="card text-white bg-dark mb-3" style="margin-top:20px">
         <div class="card-header">
-          <h2>Ingresar Testigo</h2>
+          <h2>Registrar Testigo</h2>
         </div>
         <div class="card-body">
           <%= render partial: 'witnesses/form', locals: {witness: @witness} %>
@@ -67,7 +67,7 @@
 
   <div class="card text-white bg-dark mb-3" style="margin-top:20px">
     <div class="card-header">
-      <h2>Autores</h2>
+      <h2>Imputados</h2>
     </div>
     <table class="table table-striped table-dark">
       <tr>
@@ -132,7 +132,7 @@
     <div class="col-4 mx-auto">
       <div class="card text-white bg-dark mb-3" style="margin-top:20px">
         <div class="card-header">
-          <h2>Añadir Autor</h2>
+          <h2>Añadir imputado al procedimiento</h2>
         </div>
         <div class="card-body">
           <%= render partial: 'crime_thiefs/form', locals: {crime_thief: @crimethief} %>
@@ -142,7 +142,7 @@
     <div class="col-4 mx-auto">
       <div class="card text-white bg-dark mb-3" style="margin-top:20px">
         <div class="card-header">
-          <h2>Añadir Victima</h2>
+          <h2>Añadir Victima al procedimiento</h2>
         </div>
         <div class="card-body">
           <%= render partial: 'crime_victims/form', locals: {crime_victim: @crimevictim} %>
@@ -152,7 +152,7 @@
     <div class="col-4 mx-auto">
       <div class="card text-white bg-dark mb-3" style="margin-top:20px">
         <div class="card-header">
-          <h2>Añadir Testigo</h2>
+          <h2>Añadir Testigo al procedimiento</h2>
         </div>
         <div class="card-body">
           <%= render partial: 'crime_witnesses/form', locals: {crime_witness: @crimewitness} %>

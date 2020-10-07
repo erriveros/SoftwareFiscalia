@@ -2,7 +2,7 @@
 <%= form_with(model: thief, local: false) do |form| %>
 
   <div class="field">
-    <%= form.label :name%>
+    <%= form.label :name, 'Nombre'%>
     <%= form.text_field :name%>
   </div>
   <div class="field">
@@ -14,7 +14,7 @@
     <%= form.text_field :tags%>
   </div>
   <div class="field">
-    <%= form.label :alias_list%>
+    <%= form.label :alias_list, 'Alias'%>
     <%= form.text_field :alias_list%>
   </div>
   <% if thief.errors.any? %>
@@ -29,8 +29,9 @@
     </div>
   <% end %>
 
+    <br>
   <div class="actions">
-    <%= form.submit "Crear Detenido" %>
+    <%= form.submit "Registrar Imputado" %>
   </div>
 <% end %>
 </div>
