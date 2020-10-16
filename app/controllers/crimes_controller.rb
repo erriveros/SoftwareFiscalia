@@ -27,7 +27,7 @@ class CrimesController < ApplicationController
 
     respond_to do |format|
       if @crime.save
-        format.html { redirect_to @crime, notice: 'Procedimiento creado con èxito.' }
+        format.html { redirect_to @crime, notice: 'Procedimiento creado con éxito.' }
         format.json { render :show, status: :created, location: @crime }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class CrimesController < ApplicationController
   def update
     respond_to do |format|
       if @crime.update(crime_params)
-        format.html { redirect_to @crime, notice: 'Procedimiento Actualizado con èxito.' }
+        format.html { redirect_to @crime, notice: 'Procedimiento actualizado con éxito.' }
         format.json { render :show, status: :ok, location: @crime }
       else
         format.html { render :edit }
@@ -64,7 +64,7 @@ class CrimesController < ApplicationController
     end
     @crime.destroy
     respond_to do |format|
-      format.html { redirect_to crimes_url, notice: 'Procedimiento eliminado con èxito' }
+      format.html { redirect_to crimes_url, notice: 'Procedimiento eliminado con éxito.' }
       format.json { head :no_content }
     end
   end

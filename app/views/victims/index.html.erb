@@ -20,9 +20,9 @@
         <td><%= victim.rut %></td>
         <td><%= victim.age %></td>
         <td><%= victim.detalle %></td>
-        <td><%= link_to 'Show', victim %></td>
-        <td><%= link_to 'Edit', edit_victim_path(victim) %></td>
-        <td><%= link_to 'Destroy', victim, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Abrir', victim %></td>
+        <td><%= link_to 'Editar', edit_victim_path(victim) %></td>
+        <td><%= link_to 'Eliminar', victim, method: :delete, data: { confirm: 'Está seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Victim', new_victim_path %>
+<%= link_to 'Nueva Víctima', new_victim_path %>

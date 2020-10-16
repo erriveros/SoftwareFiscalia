@@ -46,7 +46,7 @@
     <div class="col-4">
       <div class="card text-white bg-dark mb-3" style="margin-top:20px">
         <div class="card-header">
-          <h2>Registrar Victima</h2>
+          <h2>Registrar Víctima</h2>
         </div>
         <div class="card-body">
           <%= render partial: 'victims/form', locals: {victim: @victim} %>
@@ -73,7 +73,7 @@
       <tr>
         <th>Rut</th>
         <th>Nombre</th>
-        <th>Accion</th>
+        <th>Acción</th>
       <tr>
         <% criminal_ids = CrimeThief.where(crime_id:@crime.id).pluck(:thief_id)%>
         <% Thief.where(id:criminal_ids).each do |criminal|%>
@@ -88,7 +88,7 @@
 
   <div class="card text-white bg-dark mb-3" style="margin-top:20px">
     <div class="card-header">
-      <h2>Victimas</h2>
+      <h2>Víctimas</h2>
     </div>
     <table class="table table-striped table-dark">
       <tr>
@@ -142,7 +142,7 @@
     <div class="col-4 mx-auto">
       <div class="card text-white bg-dark mb-3" style="margin-top:20px">
         <div class="card-header">
-          <h2>Añadir Victima al procedimiento</h2>
+          <h2>Añadir Víctima al procedimiento</h2>
         </div>
         <div class="card-body">
           <%= render partial: 'crime_victims/form', locals: {crime_victim: @crimevictim} %>
