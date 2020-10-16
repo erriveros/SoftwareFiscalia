@@ -29,7 +29,7 @@ class WitnessesController < ApplicationController
     respond_to do |format|
       if @witness.save
         if params[:crime_id].present?
-          format.html { redirect_to crime_path(params[:crime_id]), notice: 'Witness was successfully created.' }
+          format.html { redirect_to crime_path(params[:crime_id]), notice: 'Testigo creado con éxito.' }
           format.json { render :show, status: :created, location: @witness }
         end
       else
@@ -44,7 +44,7 @@ class WitnessesController < ApplicationController
   def update
     respond_to do |format|
       if @witness.update(witness_params)
-        format.html { redirect_to @witness, notice: 'Witness was successfully updated.' }
+        format.html { redirect_to @witness, notice: 'Textigo actualizado con éxito.' }
         format.json { render :show, status: :ok, location: @witness }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class WitnessesController < ApplicationController
   def destroy
     @witness.destroy
     respond_to do |format|
-      format.html { redirect_to witnesses_url, notice: 'Witness was successfully destroyed.' }
+      format.html { redirect_to witnesses_url, notice: 'Testigo eliminado con éxito' }
       format.json { head :no_content }
     end
   end

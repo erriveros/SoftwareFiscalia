@@ -12,9 +12,9 @@
   <tbody>
     <% @crime_witnesses.each do |crime_witness| %>
       <tr>
-        <td><%= link_to 'Show', crime_witness %></td>
-        <td><%= link_to 'Edit', edit_crime_witness_path(crime_witness) %></td>
-        <td><%= link_to 'Destroy', crime_witness, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Abrir', crime_witness %></td>
+        <td><%= link_to 'Edita', edit_crime_witness_path(crime_witness) %></td>
+        <td><%= link_to 'Eliminar', crime_witness, method: :delete, data: { confirm: 'Está seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Crime Witness', new_crime_witness_path %>
+<%= link_to 'Nuevo testigo del procedimiento', new_crime_witness_path %>

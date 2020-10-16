@@ -33,7 +33,7 @@ class CrimeVictimsController < ApplicationController
     @crime = Crime.where(id:@crime_victim.crime_id).first
     respond_to do |format|
       if @crime_victim.save
-        format.html { redirect_to @crime, notice: 'Crime victim was successfully created.' }
+        format.html { redirect_to @crime, notice: 'Víctima añadida con éxito.' }
         format.json { render :show, status: :created, location: @crime_victim }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class CrimeVictimsController < ApplicationController
   def update
     respond_to do |format|
       if @crime_victim.update(crime_victim_params)
-        format.html { redirect_to @crime_victim, notice: 'Crime victim was successfully updated.' }
+        format.html { redirect_to @crime_victim, notice: 'Víctima actualizada con éxito.' }
         format.json { render :show, status: :ok, location: @crime_victim }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class CrimeVictimsController < ApplicationController
   def destroy
     @crime_victim.destroy
     respond_to do |format|
-      format.html { redirect_to crime_victims_url, notice: 'Crime victim was successfully destroyed.' }
+      format.html { redirect_to crime_victims_url, notice: 'Víctima eliminada con éxito.' }
       format.json { head :no_content }
     end
   end

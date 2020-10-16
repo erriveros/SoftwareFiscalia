@@ -29,7 +29,7 @@ class ThiefsController < ApplicationController
     respond_to do |format|
       if @thief.save
         if params[:crime_id].present?
-          format.html { redirect_to crime_path(params[:crime_id]), notice: 'Thief was successfully created.' }
+          format.html { redirect_to crime_path(params[:crime_id]), notice: 'Imputado creado con éxito.' }
           format.json { render :show, status: :created, location: @thief }
         end
 
@@ -45,7 +45,7 @@ class ThiefsController < ApplicationController
   def update
     respond_to do |format|
       if @thief.update(thief_params)
-        format.html { redirect_to @thief, notice: 'Thief was successfully updated.' }
+        format.html { redirect_to @thief, notice: 'Imputado actualizado con éxito.' }
         format.json { render :show, status: :ok, location: @thief }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class ThiefsController < ApplicationController
   def destroy
     @thief.destroy
     respond_to do |format|
-      format.html { redirect_to thiefs_url, notice: 'Thief was successfully destroyed.' }
+      format.html { redirect_to thiefs_url, notice: 'Imputado eliminado con éxito' }
       format.json { head :no_content }
     end
   end

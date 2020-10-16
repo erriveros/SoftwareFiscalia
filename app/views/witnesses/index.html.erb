@@ -20,9 +20,9 @@
         <td><%= witness.rut %></td>
         <td><%= witness.age %></td>
         <td><%= witness.detalle %></td>
-        <td><%= link_to 'Show', witness %></td>
-        <td><%= link_to 'Edit', edit_witness_path(witness) %></td>
-        <td><%= link_to 'Destroy', witness, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Abrir', witness %></td>
+        <td><%= link_to 'Editar', edit_witness_path(witness) %></td>
+        <td><%= link_to 'Eliminar', witness, method: :delete, data: { confirm: 'Está seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Witness', new_witness_path %>
+<%= link_to 'Nuevo Testigo', new_witness_path %>
