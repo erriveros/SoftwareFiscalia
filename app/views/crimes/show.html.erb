@@ -32,6 +32,7 @@
 <%@witness = Witness.new%>
 <%@crimevictim = CrimeVictim.new%>
 <%@crimewitness = CrimeWitness.new%>
+<%@crime_file = CrimeFile.new%>
   <div class="row">
     <div class="col-4 mx-auto">
       <div class="card text-white bg-dark mb-3" style="margin-top:20px">
@@ -188,7 +189,38 @@
               <%=link_to @crime.files[file].filename.to_s ,@crime.files[file], download: "" %>
             <% end %>
           <% end %>
+          <table class="table table-sm table-dark">
+          <tr>
+          <th>Nº</th>
+          <th>Descripcion</th>
+          <th>Autor</th>
+          <th>Vista previa</th>
+          <th>Link</th>
+          <th>Link</th>
+          </tr>
+          <% @files = CrimeFile.where(crime_id:@crime.id)%>
+          <% @files.each do |file|%>
+            <tr>
+            <td><%=file.id%></td>
+            <td><%= file.description%></td>
+            <td><%=file.user.name%></td>
+            <% if file.file.attached?%>
+            <td><%= image_tag(file.file, style:'width:50%') %></td>
+            <% else %>
+            <td><h2>SIN CONTENIDO</h2></td>
+          <% end %>
+          <% if file.file.attached?%>
+
+            <td><%= link_to 'Download',file.file,class: ["btn", "btn-primary"]%></td>
+            <% else %>
+            <td><h2>SIN CONTENIDO</h2></td>
+          <% end %>
+          <td><%= link_to 'Eliminar',file,method: :DELETE ,class: ["btn", "btn-danger"]%></td>
+          <% end %>
+          </tr>
+          </table>
         </div>
+        <%= render partial: 'crime_files/form', locals: {crime_file: @crime_file} %>
     </div>
 
   </div>

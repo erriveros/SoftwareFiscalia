@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :crimes
   get 'newcrimethief', to: "crime_thiefs#new", as: 'new'
   resources :crime_thiefs
-
+  resources :crime_files
   resources :users
 
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

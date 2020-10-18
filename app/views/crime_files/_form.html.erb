@@ -1,0 +1,26 @@
+<%= form_with(model: crime_file, local: false) do |form| %>
+<li style="list-style: none">
+<%= form.label :description, "Descripcion Archivo" %>
+<%= form.text_field :description %>
+</li>
+<%= form.hidden_field :crime_id, value: @crime.id %>
+<li style="list-style: none">
+  <%= form.label :file, 'Archivo' %>
+  <%= form.file_field :file%>
+</li>
+  <% if crime_file.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(crime_file.errors.count, "error") %> prohibited this crime_file from being saved:</h2>
+
+      <ul>
+        <% crime_file.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
