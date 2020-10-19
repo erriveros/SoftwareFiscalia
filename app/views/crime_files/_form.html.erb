@@ -1,13 +1,15 @@
 <%= form_with(model: crime_file, local: false) do |form| %>
-<li style="list-style: none">
+<ul class="list-group">
+<li style="list-group-item">
 <%= form.label :description, "Descripcion Archivo" %>
 <%= form.text_field :description %>
 </li>
 <%= form.hidden_field :crime_id, value: @crime.id %>
-<li style="list-style: none">
+<li style="list-group-item">
   <%= form.label :file, 'Archivo' %>
   <%= form.file_field :file%>
 </li>
+</ul>
   <% if crime_file.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(crime_file.errors.count, "error") %> prohibited this crime_file from being saved:</h2>

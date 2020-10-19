@@ -165,30 +165,7 @@
           <h2>Multimedia</h2>
         </div>
         <div class="card-body">
-          <% if @crime.clip.attached?%>
-            <div style="width:400px; height:400px">
-                <%= video_tag(url_for(@crime.clip), style:"width:100%;height: auto", controls:'') %>
-                <br>
-                <%= @crime.clip.filename.to_s%>
-            </div>
-          <%end%>
-          <% if @crime.images.count != 0 %>
-            <div style="width:400px; height:400px">
-              <%(0...@crime.images.count).each do |image| %>
-                <%= image_tag(@crime.images[image], style:'width:50%') %>
-                <br>
-                <%= @crime.images[image].filename.to_s%>
-              <% end %>
-            </div>
-          <%end%>
-          <% if @crime.files.count != 0  %>
-            <%(0...@crime.files.count).each do |file| %>
-              <%= image_tag("default_file_photo.png", style:'width:10%;height: auto') %>
-              <br>
-              <%= "Descargar Archivo: "%>
-              <%=link_to @crime.files[file].filename.to_s ,@crime.files[file], download: "" %>
-            <% end %>
-          <% end %>
+         
           <table class="table table-sm table-dark">
           <tr>
           <th>Nº</th>
@@ -205,7 +182,7 @@
             <td><%= file.description%></td>
             <td><%=file.user.name%></td>
             <% if file.file.attached?%>
-            <td><%= image_tag(file.file, style:'width:50%') %></td>
+            <td><%= image_tag(file.file, style:'width:100%') %></td>
             <% else %>
             <td><h2>SIN CONTENIDO</h2></td>
           <% end %>
@@ -220,11 +197,12 @@
           </tr>
           </table>
         </div>
-        <%= render partial: 'crime_files/form', locals: {crime_file: @crime_file} %>
     </div>
 
   </div>
 
 </div>
+<div class="col-3">   <div style="margin-top:1500px"> <div class="card text-white bg-dark mb-3">    <%= render partial: 'crime_files/form', locals: {crime_file: @crime_file} %>
+</div></div></div>
 
 </div>
