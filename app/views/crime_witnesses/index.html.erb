@@ -13,8 +13,8 @@
     <% @crime_witnesses.each do |crime_witness| %>
       <tr>
         <td><%= link_to 'Abrir', crime_witness %></td>
-        <td><%= link_to 'Edita', edit_crime_witness_path(crime_witness) %></td>
-        <td><%= link_to 'Eliminar', crime_witness, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+        <td><%= link_to 'Editar', edit_crime_witness_path(crime_witness) %></td>
+        <td><%= link_to 'Eliminar', crime_witness, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>

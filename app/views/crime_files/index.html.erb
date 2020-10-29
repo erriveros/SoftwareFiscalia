@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Crime Files</h1>
+<h1>Archivos de Procedimiento</h1>
 
 <table>
   <thead>
@@ -12,9 +12,9 @@
   <tbody>
     <% @crime_files.each do |crime_file| %>
       <tr>
-        <td><%= link_to 'Show', crime_file %></td>
-        <td><%= link_to 'Edit', edit_crime_file_path(crime_file) %></td>
-        <td><%= link_to 'Destroy', crime_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', crime_file %></td>
+        <td><%= link_to 'Editar', edit_crime_file_path(crime_file) %></td>
+        <td><%= link_to 'Borrar', crime_file, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Crime File', new_crime_file_path %>
+<%= link_to 'Nuevo archivo de procedimiento', new_crime_file_path %>

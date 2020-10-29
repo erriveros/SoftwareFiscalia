@@ -14,7 +14,7 @@
 
   <% if crime_victim.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(crime_victim.errors.count, "error") %> prohibited this crime_victim from being saved:</h2>
+      <h2><%= pluralize(crime_victim.errors.count, "error") %> impidió que se agregara esta víctima:</h2>
 
       <ul>
         <% crime_victim.errors.full_messages.each do |message| %>

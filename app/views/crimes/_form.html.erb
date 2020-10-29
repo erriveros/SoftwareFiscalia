@@ -12,15 +12,15 @@
 <%= form.text_field :place %>
 </li>
 <li style="list-style: none">
-<%= form.label :description, "descripción" %>
+<%= form.label :description, "Descripción" %>
 <%= form.text_field :description %>
 </li>
 <li style="list-style: none">
-  <%= form.label :images, 'Imagenes' %>
+  <%= form.label :images, 'Imágenes' %>
   <%= form.file_field :images, multiple: true %>
 </li>
 <li style="list-style: none">
-  <%= form.label :files, 'ARchivos' %>
+  <%= form.label :files, 'Archivos' %>
   <%= form.file_field :files, multiple: true %>
 </li>
 <li style="list-style: none">
@@ -29,7 +29,7 @@
 </li>
   <% if crime.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(crime.errors.count, "error") %> prohibited this crime from being saved:</h2>
+      <h2><%= pluralize(crime.errors.count, "error") %> impidió que se guardara este procedimiento:</h2>
 
       <ul>
         <% crime.errors.full_messages.each do |message| %>
@@ -40,6 +40,6 @@
   <% end %>
 
   <div class="actions" style="margin-top: 10px" >
-    <%= form.submit "Crear Crimen" %>
+    <%= form.submit "Crear Procedimiento" %>
   </div>
 <% end %>
