@@ -5,7 +5,11 @@
 </li>
 <li style="list-style: none">
 <%= form.label :labels, "Etiquetas" %>
-<%= form.text_field :labels %>
+  <%= form.select(:crime_tag) do %>
+    <% CrimeTag.all.each do |l| -%>
+      <%= content_tag(:option, l.tag_id.to_s() + ": " +  l.tag, value: l.tag_id) %>
+    <% end %>
+  <% end %>
 </li>
 <li style="list-style: none">
   <%= form.label :labels, "Tipo de crimen" %>
