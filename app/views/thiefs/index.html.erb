@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Thiefs</h1>
+<h1>Imputados</h1>
 
 <table>
   <thead>
@@ -12,9 +12,9 @@
   <tbody>
     <% @thiefs.each do |thief| %>
       <tr>
-        <td><%= link_to 'Show', thief %></td>
-        <td><%= link_to 'Edit', edit_thief_path(thief) %></td>
-        <td><%= link_to 'Destroy', thief, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', thief %></td>
+        <td><%= link_to 'Editar', edit_thief_path(thief) %></td>
+        <td><%= link_to 'Borrar', thief, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
