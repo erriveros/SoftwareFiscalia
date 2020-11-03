@@ -22,4 +22,12 @@ class User < ApplicationRecord
       false
     end
   end
+
+  def Admin?
+    if job == "Admin"
+      true
+    else
+      false
+    end
+  end
 end
