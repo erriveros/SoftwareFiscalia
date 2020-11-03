@@ -1,37 +1,82 @@
-<div class="field mx-auto", style="width: 200px;">
+<body>
 <%= form_with(model: thief, local: false) do |form| %>
+  <div class="container-fluid">
+    <div class="row justify-content-center custom-margin">
+      <div class="col-sm-6 col-md-4 ">
+        <!-- Add bg-primary in form tag if want form background color-->
+        <!--text-white if want text color white-->
+        <div class="field">
+          <%= form.label :name, "Nombre", class:"pl-2 font-weight-bold" %><br />
+          <%= form.text_field :name, class: "form-control" %>
+        </div>
+        <div class="field">
+          <%= form.label :rut, "RUT", class:"pl-2 font-weight-bold" %><br />
+          <%= form.text_field :rut, class: "form-control" %>
+        </div>
+        <div class="field">
+          <%= form.label :tags, "Tags", class:"pl-2 font-weight-bold" %><br />
+          <%= form.text_field :tags , class: "form-control" %>
+        </div>
+        <div class="field">
+          <%= form.label :alias_list, "Alias", class:"pl-2 font-weight-bold" %><br />
+          <%= form.text_field :alias_list , class: "form-control" %>
+        </div>
+        <% if thief.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(thief.errors.count, "error") %> impidieron registrar al imputado:</h2>
 
-  <div class="field">
-    <%= form.label :name, 'Nombre'%>
-    <%= form.text_field :name%>
-  </div>
-  <div class="field">
-    <%= form.label :rut%>
-    <%= form.text_field :rut%>
-  </div>
-  <div class="field">
-    <%= form.label :tags%>
-    <%= form.text_field :tags%>
-  </div>
-  <div class="field">
-    <%= form.label :alias_list, 'Alias'%>
-    <%= form.text_field :alias_list%>
-  </div>
-  <% if thief.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(thief.errors.count, "error") %> impidieron registrar al imputado:</h2>
-
-      <ul>
-        <% thief.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+            <ul>
+              <% thief.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+        <div class="actions">
+          <%= form.submit "Registrar Imputado", class: "btn btn-outline-success mt-3 btn-block shadow-sm font-weight-bold"%>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-    <br>
-  <div class="actions">
-    <%= form.submit "Registrar Imputado" %>
   </div>
 <% end %>
-</div>
+</body>
+
+
+
+<!--<div class="field mx-auto", style="width: 200px;">-->
+  <%#= form_with(model: thief, local: false) do |form| %>
+
+<!--    <div class="field">-->
+      <%#= form.label :name, 'Nombre'%>
+      <%#= form.text_field :name%>
+<!--    </div>-->
+<!--    <div class="field">-->
+      <%#= form.label :rut%>
+      <%#= form.text_field :rut%>
+<!--    </div>-->
+<!--    <div class="field">-->
+      <%#= form.label :tags%>
+      <%#= form.text_field :tags%>
+<!--    </div>-->
+<!--    <div class="field">-->
+      <%#= form.label :alias_list, 'Alias'%>
+      <%#= form.text_field :alias_list%>
+<!--    </div>-->
+    <%# if thief.errors.any? %>
+<!--      <div id="error_explanation">-->
+<!--        <h2><%#= pluralize(thief.errors.count, "error") %> impidieron registrar al imputado:</h2>-->
+
+<!--        <ul>-->
+          <%# thief.errors.full_messages.each do |message| %>
+<!--            <li><%#= message %></li>-->
+          <%# end %>
+<!--        </ul>-->
+<!--      </div>-->
+    <%# end %>
+
+<!--    <br>-->
+<!--    <div class="actions">-->
+      <%#= form.submit "Registrar Imputado" %>
+<!--    </div>-->
+  <%# end %>
+<!--</div>-->

@@ -1,208 +1,189 @@
-<div class="row">
-<div class="col-3"></div>
-<div class="col-6">
-<p id="notice"><%= notice %></p>
-
-<div class="row">
-  <div class="col-4">
-    <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home" style="color:white; background:#343a40">Titulo</a>
-      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile" style="color:white; background:#343a40">Marca</a>
-      <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages" style="color:white; background:#343a40">Lugar</a>
-            <a class="list-group-item list-group-item-action" id="list-desc-list" data-toggle="list" href="#list-desc" role="tab" aria-controls="desc" style="color:white; background:#343a40">Relato</a>
-      <a class="list-group-item list-group-item-action" id="list-act-list" data-toggle="list" href="#list-act" role="tab" aria-controls="act" style="color:white; background:#343a40">Opciones</a>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <title>Crimen</title>
+</head>
+<body>
+  <main>
+    <br>
+    <div class="container-fluid">
+      <h1 class="container-fluid col-6">Caso N°<%= @crime.id%> <%= @crime.title%></h1>
+      <h5 class="container-fluid col-6">Marca: <%= @tags.tag%></h5>
+      <h6 class="container-fluid col-6">Lugar del hecho: <%= @crime.place%></h6>
     </div>
-  </div>
-  <div class="col-8">
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list"><%= @crime.title%></div>
-      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list"><%= @crime.labels%></div>
-      <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list"><%= @crime.place%></div>
-      <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list"><%= @crime.created_at.to_date%></div>
-      <div class="tab-pane fade" id="list-desc" role="tabpanel" aria-labelledby="list-desc-list"><%= @crime.description%></div>
-      <div class="tab-pane fade" id="list-act" role="tabpanel" aria-labelledby="list-act-list"><%= link_to "Editar", edit_crime_path(@crime.id),:class => "btn btn-primary"%>  <% if current_user.Fiscal? %><%= link_to "Pronunciarse", @crime,:class => "btn btn-primary"%><% end %>  <%= link_to "Eliminar", crime_path(@crime.id),:style => "margin-left:5px",:data => { :foo_bar => 'Seguro que desea borrar el crimen?' },:method => :DELETE,:class => "btn btn-danger"%></div>
-
+    <br>
+    <div class="d-flex position-fixed" id="sidebar-wrapper">
+      <div class="list-group list-group-flush container-fluid">
+        <a href="#" class="list-group-item list-group-item-action bg-dark text-white font-italic">Inicio</a>
+        <a href="#multi" class="list-group-item list-group-item-action bg-dark text-white font-italic">Multimedia</a>
+      </div>
     </div>
-  </div>
-</div>
-<%@crimethief = CrimeThief.new%>
-<%@thief = Thief.new%>
-<%@victim = Victim.new%>
-<%@witness = Witness.new%>
-<%@crimevictim = CrimeVictim.new%>
-<%@crimewitness = CrimeWitness.new%>
-<%@crime_file = CrimeFile.new%>
-  <div class="row">
-    <div class="col-4 mx-auto">
-      <div class="card text-white bg-dark mb-3" style="margin-top:20px">
-        <div class="card-header">
-          <h2>Registrar Imputado</h2>
-        </div>
-        <div class="card-body">
-          <%= render partial: 'thiefs/form', locals: {thief: @thief} %>
+    <div class="container-fluid">
+      <h3 class="container-fluid col-6">Relato del crimen</h3>
+      <p class="container-fluid col-6"><%= @crime.description%></p>
+    </div>
+    <div class="container-fluid">
+      <%@crimethief = CrimeThief.new%>
+      <%@thief = Thief.new%>
+      <%@victim = Victim.new%>
+      <%@witness = Witness.new%>
+      <%@crimevictim = CrimeVictim.new%>
+      <%@crimewitness = CrimeWitness.new%>
+      <%@crime_file = CrimeFile.new%>
+      <div class="row">
+        <div class="container-fluid col-6">
+          <div class="card text-white bg-dark mb-3" style="margin-top:20px">
+            <div class="card-header">
+              <h2>Imputados</h2>
+              <div class="float-right">
+                <%= link_to "Registrar", new_thief_path,:class => "btn btn-primary"%>
+              </div>
+            </div>
+            <table class="table table-striped table-dark table-responsive-sm">
+              <tr>
+                <th>Rut</th>
+                <th>Nombre</th>
+                <th>Acción</th>
+              <tr>
+                <% criminal_ids = CrimeThief.where(crime_id:@crime.id).pluck(:thief_id)%>
+                <% Thief.where(id:criminal_ids).each do |criminal|%>
+                <tr>
+                  <td><%= criminal.rut%></td>
+                  <td><%= criminal.name%></td>
+                  <td><%= criminal.tags%></td>
+                <tr>
+              <%end%>
+            </table>
+            <div>
+              <div class="float-right">
+                <%= render partial: 'crime_thiefs/form', locals: {crime_thief: @crimethief} %>
+              </div>
+              <h5 class="float-right">+</h5>
+            </div>
+          </div>
+
+          <div class="card text-white bg-dark mb-3" style="margin-top:20px">
+            <div class="card-header">
+              <h2>Víctimas</h2>
+              <div class="float-right">
+                <%= link_to "Registrar", new_victim_path,:class => "btn btn-primary"%>
+              </div>
+            </div>
+            <table class="table table-striped table-dark table-responsive-sm">
+              <tr>
+                <th>Rut</th>
+                <th>Nombre</th>
+                <th>Detalle</th>
+              <tr>
+                <% victim_ids = CrimeVictim.where(crime_id: @crime.id).pluck(:victim_id)%>
+                <% Victim.where(id:victim_ids).each do |victim|%>
+                <tr>
+                  <td><%= victim.rut%></td>
+                  <td><%= victim.name%></td>
+                  <td><%= victim.detalle%></td>
+                <tr>
+              <%end%>
+            </table>
+            <div>
+              <div class="float-right">
+                <%= render partial: 'crime_victims/form', locals: {crime_victim: @crimevictim} %>
+              </div>
+              <h5 class="float-right">+</h5>
+            </div>
+          </div>
+
+          <div class="card text-white bg-dark mb-3" style="margin-top:20px">
+            <div class="card-header">
+              <h2>Testigos</h2>
+              <div class="float-right">
+                <%= link_to "Registrar", new_witness_path,:class => "btn btn-primary"%>
+              </div>
+            </div>
+            <table class="table table-striped table-dark table-responsive-sm">
+              <tr>
+                <th>Rut</th>
+                <th>Nombre</th>
+                <th>Detalle</th>
+              <tr>
+                <% witness_ids = CrimeWitness.where(crime_id: @crime.id).pluck(:witness_id)%>
+                <% Witness.where(id:witness_ids).each do |witness|%>
+                <tr>
+                  <td><%= witness.rut%></td>
+                  <td><%= witness.name%></td>
+                  <td><%= witness.detalle%></td>
+                <tr>
+              <%end%>
+            </table>
+            <div>
+              <div class="float-right">
+                <%= render partial: 'crime_witnesses/form', locals: {crime_witness: @crimewitness} %>
+              </div>
+              <h5 class="float-right">+</h5>
+            </div>
+          </div>
+
+          <div class="card text-white bg-dark mb-3" style="margin-top:20px" id="multi">
+            <div class="card-header">
+              <h2>Multimedia</h2>
+              <div class="float-right">
+                <%= render partial: 'crime_files/form', locals: {crime_file: @crime_file} %>
+              </div>
+            </div>
+            <div class="card-body">
+
+              <table class="table table-striped table-dark table-responsive-sm">
+                <tr>
+                  <th>Nº</th>
+                  <th>Descripcion</th>
+                  <th>Autor</th>
+                  <th>Vista previa</th>
+                  <th>Link</th>
+                  <th>Link</th>
+                </tr>
+                <% @files = CrimeFile.where(crime_id:@crime.id)%>
+                <% @files.each do |file|%>
+                  <tr>
+                    <td><%=file.id%></td>
+                    <td><%= file.description%></td>
+                    <td><%=file.user.name%></td>
+                    <% if file.file.attached?%>
+                      <td><%= image_tag(file.file, style:'width:100%') %></td>
+                    <% else %>
+                      <td><h2>SIN CONTENIDO</h2></td>
+                    <% end %>
+                    <% if file.file.attached?%>
+
+                      <td><%= link_to 'Descargar',file.file,class: ["btn", "btn-primary"]%></td>
+                    <% else %>
+                      <td><h2>SIN CONTENIDO</h2></td>
+                    <% end %>
+                    <td><%= link_to 'Eliminar',file,method: :DELETE ,class: ["btn", "btn-danger"]%></td>
+                <% end %>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>
-    <div class="col-4">
-      <div class="card text-white bg-dark mb-3" style="margin-top:20px">
-        <div class="card-header">
-          <h2>Registrar Víctima</h2>
-        </div>
-        <div class="card-body">
-          <%= render partial: 'victims/form', locals: {victim: @victim} %>
-        </div>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card text-white bg-dark mb-3" style="margin-top:20px">
-        <div class="card-header">
-          <h2>Registrar Testigo</h2>
-        </div>
-        <div class="card-body">
-          <%= render partial: 'witnesses/form', locals: {witness: @witness} %>
-        </div>
-      </div>
-    </div>
-  </div>
+  </main>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</html>
 
-  <div class="card text-white bg-dark mb-3" style="margin-top:20px">
-    <div class="card-header">
-      <h2>Imputados</h2>
-    </div>
-    <table class="table table-striped table-dark">
-      <tr>
-        <th>Rut</th>
-        <th>Nombre</th>
-        <th>Acción</th>
-      <tr>
-        <% criminal_ids = CrimeThief.where(crime_id:@crime.id).pluck(:thief_id)%>
-        <% Thief.where(id:criminal_ids).each do |criminal|%>
-        <tr>
-          <td><%= criminal.rut%></td>
-          <td><%= criminal.name%></td>
-          <td><%= criminal.tags%></td>
-        <tr>
-      <%end%>
-    </table>
-  </div>
 
-  <div class="card text-white bg-dark mb-3" style="margin-top:20px">
-    <div class="card-header">
-      <h2>Víctimas</h2>
-    </div>
-    <table class="table table-striped table-dark">
-      <tr>
-        <th>Rut</th>
-        <th>Nombre</th>
-        <th>Detalle</th>
-      <tr>
-        <% victim_ids = CrimeVictim.where(crime_id: @crime.id).pluck(:victim_id)%>
-        <% Victim.where(id:victim_ids).each do |victim|%>
-        <tr>
-          <td><%= victim.rut%></td>
-          <td><%= victim.name%></td>
-          <td><%= victim.detalle%></td>
-        <tr>
-      <%end%>
-    </table>
-  </div>
 
-  <div class="card text-white bg-dark mb-3" style="margin-top:20px">
-    <div class="card-header">
-      <h2>Testigos</h2>
-    </div>
-    <table class="table table-striped table-dark">
-      <tr>
-        <th>Rut</th>
-        <th>Nombre</th>
-        <th>Detalle</th>
-      <tr>
-        <% witness_ids = CrimeWitness.where(crime_id: @crime.id).pluck(:witness_id)%>
-        <% Witness.where(id:witness_ids).each do |witness|%>
-        <tr>
-          <td><%= witness.rut%></td>
-          <td><%= witness.name%></td>
-          <td><%= witness.detalle%></td>
-        <tr>
-      <%end%>
-    </table>
-  </div>
+<!--<div class="col-3">-->
+<!--  <div style="margin-top:1500px">-->
+<!--    <div class="card text-white bg-dark mb-3">-->
+      <%#= render partial: 'crime_files/form', locals: {crime_file: @crime_file} %>
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
-  <div class="row">
-    <div class="col-4 mx-auto">
-      <div class="card text-white bg-dark mb-3" style="margin-top:20px">
-        <div class="card-header">
-          <h2>Añadir imputado al procedimiento</h2>
-        </div>
-        <div class="card-body">
-          <%= render partial: 'crime_thiefs/form', locals: {crime_thief: @crimethief} %>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 mx-auto">
-      <div class="card text-white bg-dark mb-3" style="margin-top:20px">
-        <div class="card-header">
-          <h2>Añadir Víctima al procedimiento</h2>
-        </div>
-        <div class="card-body">
-          <%= render partial: 'crime_victims/form', locals: {crime_victim: @crimevictim} %>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 mx-auto">
-      <div class="card text-white bg-dark mb-3" style="margin-top:20px">
-        <div class="card-header">
-          <h2>Añadir Testigo al procedimiento</h2>
-        </div>
-        <div class="card-body">
-          <%= render partial: 'crime_witnesses/form', locals: {crime_witness: @crimewitness} %>
-        </div>
-      </div>
-    </div>
-      <div class="card text-white bg-dark mb-3" style="margin-top:20px">
-        <div class="card-header">
-          <h2>Multimedia</h2>
-        </div>
-        <div class="card-body">
-         
-          <table class="table table-sm table-dark">
-          <tr>
-          <th>Nº</th>
-          <th>Descripcion</th>
-          <th>Autor</th>
-          <th>Vista previa</th>
-          <th>Link</th>
-          <th>Link</th>
-          </tr>
-          <% @files = CrimeFile.where(crime_id:@crime.id)%>
-          <% @files.each do |file|%>
-            <tr>
-            <td><%=file.id%></td>
-            <td><%= file.description%></td>
-            <td><%=file.user.name%></td>
-            <% if file.file.attached?%>
-            <td><%= image_tag(file.file, style:'width:100%') %></td>
-            <% else %>
-            <td><h2>SIN CONTENIDO</h2></td>
-          <% end %>
-          <% if file.file.attached?%>
-
-            <td><%= link_to 'Descargar',file.file,class: ["btn", "btn-primary"]%></td>
-            <% else %>
-            <td><h2>SIN CONTENIDO</h2></td>
-          <% end %>
-          <td><%= link_to 'Eliminar',file,method: :DELETE ,class: ["btn", "btn-danger"]%></td>
-          <% end %>
-          </tr>
-          </table>
-        </div>
-    </div>
-
-  </div>
-
-</div>
-<div class="col-3">   <div style="margin-top:1500px"> <div class="card text-white bg-dark mb-3">    <%= render partial: 'crime_files/form', locals: {crime_file: @crime_file} %>
-</div></div></div>
-
-</div>
