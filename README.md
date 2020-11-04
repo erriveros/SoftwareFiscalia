@@ -1,4 +1,10 @@
 # README
+## Software de Fiscalía
+
+### Cargar bases de datos
+Se pueden agregar bases de datos en formato CSV de la siguiente manera:
+* Para cargar Marcas:
+    * Agregar archivo csv al directorio app/assets/marcas
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
