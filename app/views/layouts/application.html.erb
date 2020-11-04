@@ -35,13 +35,27 @@
             </li>
             <li class="nav-item">
               <% if signed_in? %>
-                <a class="nav-link" <%=link_to "Reportar crimen", new_crime_path, :style => "color:white"%></a>
+                <a class="nav-link" <%=link_to "Nuevo procedimiento", new_crime_path, :style => "color:white"%></a>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <% if signed_in? %>
+                <% if current_user.Admin? %>
+                  <a class="nav-link" <%=link_to "Agregar usuario", new_user_url , :style => "color:white"%></a>
+                <% end %>
               <% end %>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            <% if signed_in? %>
+              <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            <% end %>
+          </form>
+          <form class="nav-item">
+            <% if signed_in? %>
+              <a class="nav-link"  href="#"><%= current_user.name %> </a>
+            <% end %>
           </form>
           <form class="form-inline my-2 my-lg-0">
             <% if signed_in? %>
@@ -51,9 +65,6 @@
             <% else %>
               <li class="nav-item">
                 <a class="nav-link" <%= link_to "Ingresar", new_user_session_path %></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" <%= link_to "Registrarse", new_user_registration_path %></a>
               </li>
             <% end %>
 
