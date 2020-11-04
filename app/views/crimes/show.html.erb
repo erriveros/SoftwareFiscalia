@@ -118,6 +118,9 @@
                 <th>Rut</th>
                 <th>Nombre</th>
                 <th>Marca</th>
+                <% if current_user.Fiscal? %>
+                <th>Acción</th>
+                <%end%>
               <tr>
                 <% criminal_ids = CrimeThief.where(crime_id:@crime.id).pluck(:thief_id)%>
                 <% Thief.where(id:criminal_ids).each do |criminal|%>
@@ -125,6 +128,9 @@
                   <td><%= criminal.rut%></td>
                   <td><%= criminal.name%></td>
                   <td><%= criminal.tags%></td>
+                  <% if current_user.Fiscal? %>
+                    <td><%= link_to "Pronunciarce", @crime,:class => "btn btn-primary"%></td>
+                  <%end%>
                 <tr>
               <%end%>
             </table>
