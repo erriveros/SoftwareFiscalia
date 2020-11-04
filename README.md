@@ -32,27 +32,3 @@ Por ejemplo: `306;FALSO TEST, PERJURIO O DEN.CALUM. ART.206,209,210,211 Y 212`
 A modo de ejemplo se incluye un csv llamado `datos.csv` que contiene una muestra
 del total de Marcas.
 3. En consola ejecutar `rake load_csv:marcas`.
-
----
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
