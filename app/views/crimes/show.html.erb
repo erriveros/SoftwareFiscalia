@@ -117,7 +117,7 @@
               <tr>
                 <th>Rut</th>
                 <th>Nombre</th>
-                <th>Acción</th>
+                <th>Marca</th>
               <tr>
                 <% criminal_ids = CrimeThief.where(crime_id:@crime.id).pluck(:thief_id)%>
                 <% Thief.where(id:criminal_ids).each do |criminal|%>

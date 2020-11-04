@@ -15,7 +15,7 @@
         </div>
         <div class="field">
           <%= form.label :tags, "Tags", class:"pl-2 font-weight-bold" %><br />
-          <%= form.text_field :tags , class: "form-control" %>
+          <%= form.collection_select :tags, CrimeTag.all,:tag, :tag %>
         </div>
         <div class="field">
           <%= form.label :alias_list, "Alias", class:"pl-2 font-weight-bold" %><br />
