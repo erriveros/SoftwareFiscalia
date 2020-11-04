@@ -10,9 +10,15 @@ Solo se pueden crear meditante el uso de consola.
 Estos requieren el siguiente formato: `email;nombre;contraseña;rut;cargo`\
 Por ejemplo: `admin1@admin.com;Admin1 Name;admin_password;0.000.000-1;Admin`
 
-1. Cargar datos de administradores como csv en `app/assets/Administradores`.
+1. Cargar datos de administradores como csv en `app/assets/Administradores`
 2. `lib/taks/create_user.rake` cambiar el nombre del archivo al que corresponda. 
-3. En consola ejecutar 
+3. En consola ejecutar `rake create_user:admin`
+
+### Fiscales
+Solo lo puede hacer un administrador a través de la aplicación.
+
+### Carabineros
+Solo lo puede hacer un administrador a través de la aplicación.
 
 ## Cargar bases de datos
 Se pueden agregar bases de datos en formato CSV de la siguiente manera:
