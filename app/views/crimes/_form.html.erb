@@ -6,11 +6,11 @@
         <!-- Add bg-primary in form tag if want form background color-->
         <!--text-white if want text color white-->
         <div class="field">
-          <%= form.label :title, "Titulo", class:"pl-2 font-weight-bold" %><br />
+          <%= form.label :title, "Título", class:"pl-2 font-weight-bold" %><br />
           <%= form.text_field :title, class: "form-control" %>
         </div>
         <div class="field">
-          <%= form.label :labels, "Etiquetas", class:"pl-2 font-weight-bold" %><br />
+          <%= form.label :labels, "Marca", class:"pl-2 font-weight-bold" %><br />
           <%= form.collection_select :labels, CrimeTag.all,:id, :tag %>
         </div>
         <div class="field">
@@ -22,11 +22,11 @@
           <%= form.text_area :description , class: "form-control" %>
         </div>
         <div class="field">
-          <%= form.label :images, 'Imagenes', class:"pl-2 font-weight-bold" %><br />
+          <%= form.label :images, 'Imágenes', class:"pl-2 font-weight-bold" %><br />
           <%= form.file_field :images, multiple: true %>
         </div>
         <div class="field">
-          <%= form.label :files, 'Files', class:"pl-2 font-weight-bold" %><br />
+          <%= form.label :files, 'Archivos', class:"pl-2 font-weight-bold" %><br />
           <%= form.file_field :files, multiple: true %>
         </div>
         <div class="field">
@@ -54,57 +54,3 @@
   </div>
 <% end %>
 </body>
-
-
-
-
-<%#= form_with(model: crime, local: true) do |form| %>
-<!--<li style="list-style: none">-->
-<%#= form.label :title, "Título" %>
-<%#= form.text_field :title %>
-<!--</li>-->
-<!--<li style="list-style: none">-->
-<%#= form.label :labels, "Etiquetas" %>
-<%#= form.collection_select :labels, CrimeTag.all,:id, :tag %>
-
-<!--</li>-->
-<!--<li style="list-style: none">-->
-  <%#= form.label :labels, "Tipo de crimen" %>
-  <%#= form.text_field :labels %>
-<!--</li>-->
-<!--<li style="list-style: none">-->
-<%#= form.label :place, "Lugar" %>
-<%#= form.text_field :place %>
-<!--</li>-->
-<!--<li style="list-style: none">-->
-<%#= form.label :description, "Descripción" %>
-<%#= form.text_field :description %>
-<!--</li>-->
-<!--<li style="list-style: none">-->
-  <%#= form.label :images, 'Imágenes' %>
-  <%#= form.file_field :images, multiple: true %>
-<!--</li>-->
-<!--<li style="list-style: none">-->
-  <%#= form.label :files, 'Archivos' %>
-  <%#= form.file_field :files, multiple: true %>
-<!--</li>-->
-<!--<li style="list-style: none">-->
-  <%#= form.label :clip, 'Videos' %>
-  <%#= form.file_field :clip %>
-<!--</li>-->
-  <%# if crime.errors.any? %>
-<!--    <div id="error_explanation">-->
-<!--      <h2><%#= pluralize(crime.errors.count, "error") %> impidió que se guardara este procedimiento:</h2>-->
-
-<!--      <ul>-->
-        <%# crime.errors.full_messages.each do |message| %>
-<!--          <li><%#= message %></li>-->
-        <%# end %>
-<!--      </ul>-->
-<!--    </div>-->
-  <%# end %>
-
-<!--  <div class="actions" style="margin-top: 10px" >-->
-    <%#= form.submit "Crear Procedimiento" %>
-<!--  </div>-->
-<%# end %>
