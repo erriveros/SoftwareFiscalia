@@ -1,6 +1,11 @@
 # README
 ## Software de Fiscalía
-Version de Rails: 2.6.5
+Version de Rails: 2.6.5\
+Para instalar la aplicación se deben ingresar por consola los siguientes comandos:
+1. `rvm use 2.6.5`
+2. `rails db:create`
+3. `rails db:migrate`
+4. `rails s`
 
 ## Crear usuarios
 Se pueden crear administradores, fiscales y carabineros.
