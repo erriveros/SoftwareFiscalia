@@ -9,8 +9,7 @@ class CrimesController < ApplicationController
   # GET /crimes/1
   # GET /crimes/1.json
   def show
-    @tags = CrimeTag.find_by tag: @crime.labels
-    @tags2 = CrimeTag.find(@crime.labels)
+    @tags = CrimeTag.find(@crime.labels)
   end
 
   # GET /crimes/new
