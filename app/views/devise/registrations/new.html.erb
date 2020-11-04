@@ -27,14 +27,14 @@
         </div>
         <br>
         <div class="field">
-          <%= f.label :password , "Contrasena", class:"pl-2 font-weight-bold"%><br />
+          <%= f.label :password , "Contraseña", class:"pl-2 font-weight-bold"%><br />
           <% if @minimum_password_length %>
             <em>(Mínimo <%= @minimum_password_length %> caracteres)</em>
           <% end %>
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control"%>
         </div>
         <div class="field">
-          <%= f.label :password_confirmation, "Confirmar contraseñ a", class:"pl-2 font-weight-bold" %><br />
+          <%= f.label :password_confirmation, "Confirmar contraseña", class:"pl-2 font-weight-bold" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password" , class: "form-control"%>
         </div>
         <div class="actions">
