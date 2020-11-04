@@ -253,6 +253,12 @@
             <% end %>
           </div>
 
+          <div class="float-right">
+            <% if current_user.Admin? %>
+              <%= link_to "Eliminar", crime_path(@crime.id),:style => "margin-left:5px",:data => { :foo_bar => 'Seguro que desea borrar el crimen?' },:method => :DELETE,:class => "btn btn-danger"%>
+            <% end %>
+          </div>
+
         </div>
       </div>
     </div>
