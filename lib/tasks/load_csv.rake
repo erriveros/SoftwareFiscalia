@@ -3,9 +3,10 @@ require 'csv'
 namespace :cargar_csv do
   desc "Importar csv"
   task marcas: :environment do
-    filename = "app/assets/Marcas/datos.csv"
+    filename = "datos.csv"
+    direct = "app/assets/Marcas/" + filename
     counter = 0
-    CSV.foreach(filename, "r", col_sep: ";") do |row|
+    CSV.foreach(direct, "r", col_sep: ";") do |row|
       code, title = row
       crime_tag = CrimeTag.create(tag_id: code, tag: title)
       puts crime_tag.errors.full_messages if crime_tag.errors.any?
