@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2020_11_02_222145) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -34,9 +37,9 @@ ActiveRecord::Schema.define(version: 2020_11_02_222145) do
   end
 
   create_table "crime_files", force: :cascade do |t|
-    t.integer "crime_id", null: false
+    t.bigint "crime_id", null: false
     t.string "description"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["crime_id"], name: "index_crime_files_on_crime_id"
@@ -51,8 +54,8 @@ ActiveRecord::Schema.define(version: 2020_11_02_222145) do
   end
 
   create_table "crime_thiefs", force: :cascade do |t|
-    t.integer "crime_id", null: false
-    t.integer "thief_id", null: false
+    t.bigint "crime_id", null: false
+    t.bigint "thief_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["crime_id"], name: "index_crime_thiefs_on_crime_id"
@@ -60,8 +63,8 @@ ActiveRecord::Schema.define(version: 2020_11_02_222145) do
   end
 
   create_table "crime_victims", force: :cascade do |t|
-    t.integer "crime_id", null: false
-    t.integer "victim_id", null: false
+    t.bigint "crime_id", null: false
+    t.bigint "victim_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["crime_id"], name: "index_crime_victims_on_crime_id"
@@ -69,8 +72,8 @@ ActiveRecord::Schema.define(version: 2020_11_02_222145) do
   end
 
   create_table "crime_witnesses", force: :cascade do |t|
-    t.integer "crime_id", null: false
-    t.integer "witness_id", null: false
+    t.bigint "crime_id", null: false
+    t.bigint "witness_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["crime_id"], name: "index_crime_witnesses_on_crime_id"
